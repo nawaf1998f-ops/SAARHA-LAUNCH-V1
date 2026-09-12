@@ -1,282 +1,485 @@
-<section class="hero">
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
 
-  <div class="brand">
+  <title>سعرها — قبل لا تدفع... سعّرها</title>
 
-    <div class="logo">﷼</div>
+  <style>
+    :root {
+      --green: #0F5132;
+      --green2: #167348;
+      --black: #111111;
+      --gold: #D4AF37;
+      --bg: #F6F7F8;
+      --card: #ffffff;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+    }
 
-    <div>
-      <h1>سعرها</h1>
-      <small>قبل لا تدفع... سعّرها</small>
-    </div>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Tahoma,
+        Arial,
+        sans-serif;
+      background: var(--bg);
+      color: var(--black);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .shell {
+      max-width: 900px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding: 22px 18px 90px;
+    }
+
+    .hero {
+      background: linear-gradient(
+        135deg,
+        var(--green),
+        var(--green2)
+      );
+      color: white;
+      border-radius: 26px;
+      padding: 28px 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 14px 35px rgba(15, 81, 50, 0.18);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 17px;
+      background: var(--gold);
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 27px;
+      font-weight: 900;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 2px;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .hero h2 {
+      margin: 24px 0 7px;
+      font-size: 23px;
+    }
+
+    .hero p {
+      margin: 0;
+      line-height: 1.8;
+      opacity: 0.92;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+    }
+
+    .search {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .search input {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 15px;
+      outline: none;
+      background: #fff;
+    }
+
+    .search input:focus {
+      border-color: var(--green2);
+    }
+
+    .search button {
+      border: 0;
+      border-radius: 16px;
+      padding: 0 20px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .section-title {
+      margin: 5px 0 14px;
+      font-size: 20px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .service {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 20px;
+      padding: 19px 14px;
+      text-align: right;
+      transition: 0.15s ease;
+    }
+
+    .service:active {
+      transform: scale(0.98);
+    }
+
+    .service-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .service-name {
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    .service-desc {
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    #servicePage {
+      display: none;
+    }
+
+    .back {
+      border: 0;
+      background: transparent;
+      color: var(--green);
+      font-weight: 900;
+      padding: 5px 0 15px;
+    }
+
+    #serviceTitle {
+      margin: 0 0 15px;
+      font-size: 24px;
+    }
+
+    #products {
+      display: grid;
+      gap: 11px;
+    }
+
+    .product {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 15px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .product-name {
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .price-button {
+      border: 0;
+      border-radius: 13px;
+      padding: 11px 14px;
+      white-space: nowrap;
+      background: var(--green);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .note {
+      margin-top: 18px;
+      border-radius: 16px;
+      background: #FFF9E6;
+      border: 1px solid #F1D98A;
+      padding: 13px;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    #selectedProduct {
+      font-weight: 900;
+      color: var(--green);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 10px 0;
+      font-size: 12px;
+    }
+
+    @media (min-width: 700px) {
+      .services {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="shell">
+
+    <section class="hero">
+
+      <div class="brand">
+
+        <div class="logo">﷼</div>
+
+        <div>
+          <h1>سعرها</h1>
+          <small>قبل لا تدفع... سعّرها</small>
+        </div>
+
+      </div>
+
+      <h2>اعرف السعر العادل قبل ما تدفع</h2>
+
+      <p>
+        اختر الخدمة، قارن السعر، وخذ فكرة أوضح
+        قبل الاتفاق مع مقدم الخدمة.
+      </p>
+
+    </section>
+
+
+    <main class="panel">
+
+      <section id="home">
+
+        <div class="search">
+
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="وش الخدمة اللي تبي تعرف سعرها؟"
+            autocomplete="off"
+          />
+
+          <button
+            type="button"
+            onclick="searchProducts()"
+          >
+            بحث
+          </button>
+
+        </div>
+
+
+        <h2 class="section-title">
+          اختر الخدمة
+        </h2>
+
+
+        <div class="services">
+
+          <button
+            class="service"
+            type="button"
+            onclick="openAC()"
+          >
+            <div class="service-icon">❄️</div>
+            <div class="service-name">المكيفات</div>
+            <div class="service-desc">
+              تنظيف، تركيب، صيانة وفريون
+            </div>
+          </button>
+
+
+          <button
+            class="service"
+            type="button"
+            onclick="openPlumbing()"
+          >
+            <div class="service-icon">🚿</div>
+            <div class="service-name">السباكة</div>
+            <div class="service-desc">
+              تسريبات، سخانات وتمديدات
+            </div>
+          </button>
+
+
+          <button
+            class="service"
+            type="button"
+            onclick="openElectricity()"
+          >
+            <div class="service-icon">⚡</div>
+            <div class="service-name">الكهرباء</div>
+            <div class="service-desc">
+              أعطال، إنارة، أفياش وقواطع
+            </div>
+          </button>
+
+
+          <button
+            class="service"
+            type="button"
+            onclick="openCleaning()"
+          >
+            <div class="service-icon">🧹</div>
+            <div class="service-name">التنظيف</div>
+            <div class="service-desc">
+              منازل، كنب، سجاد وتنظيف شامل
+            </div>
+          </button>
+
+
+          <button
+            class="service"
+            type="button"
+            onclick="openMoving()"
+          >
+            <div class="service-icon">🚚</div>
+            <div class="service-name">نقل العفش</div>
+            <div class="service-desc">
+              نقل، تغليف، فك وتركيب
+            </div>
+          </button>
+
+
+          <button
+            class="service"
+            type="button"
+            onclick="openPestControl()"
+          >
+            <div class="service-icon">🐜</div>
+            <div class="service-name">
+              مكافحة الحشرات
+            </div>
+            <div class="service-desc">
+              رش ومكافحة الحشرات المنزلية
+            </div>
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <section id="servicePage">
+
+        <button
+          class="back"
+          type="button"
+          onclick="showHome()"
+        >
+          ← رجوع للرئيسية
+        </button>
+
+        <h2 id="serviceTitle">
+          الخدمة
+        </h2>
+
+
+        <div class="search">
+
+          <input
+            id="serviceSearchInput"
+            type="search"
+            placeholder="ابحث داخل الخدمات..."
+            autocomplete="off"
+          />
+
+        </div>
+
+
+        <div id="products"></div>
+
+
+        <div class="note">
+          الخدمة المختارة:
+          <span id="selectedProduct">
+            لم يتم اختيار خدمة
+          </span>
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer>
+      سعرها © 2026
+    </footer>
 
   </div>
 
-  <h2>اعرف السعر العادل قبل ما تدفع</h2>
 
-  <p>
-    اختر الخدمة، قارن السعر، وخذ فكرة أوضح قبل الاتفاق مع مقدم الخدمة.
-  </p>
-
-</section>
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
 
 
-<main class="panel">
+  <script>
+    const serviceSearchInput =
+      document.getElementById("serviceSearchInput");
 
-  <!-- الصفحة الرئيسية -->
+    if (serviceSearchInput) {
+      serviceSearchInput.addEventListener(
+        "input",
+        function () {
+          const searchInput =
+            document.getElementById("searchInput");
 
-  <section id="home" class="page">
+          if (searchInput) {
+            searchInput.value =
+              serviceSearchInput.value;
+          }
 
-    <div class="search">
-
-      <input
-        id="searchInput"
-        type="search"
-        placeholder="ابحث عن مكيف سبليت أو أي منتج..."
-        autocomplete="off"
-      >
-
-      <button type="button" onclick="searchProducts()">
-        بحث
-      </button>
-
-    </div>
-
-    <div id="searchResults"></div>
-
-
-    <h2 class="section-title">
-      اختر الخدمة
-    </h2>
-
-
-    <div class="services">
-
-      <button
-        class="service"
-        type="button"
-        onclick="openAC()"
-      >
-        <div class="service-icon">❄️</div>
-        <div class="service-name">المكيفات</div>
-        <div class="service-desc">
-          أسعار المكيفات ومقارنة الخيارات
-        </div>
-      </button>
-
-
-      <button
-        class="service"
-        type="button"
-        onclick="openPlumbing()"
-      >
-        <div class="service-icon">🚰</div>
-        <div class="service-name">السباكة</div>
-        <div class="service-desc">
-          تسريبات، سخانات وتمديدات
-        </div>
-      </button>
-
-
-      <button
-        class="service"
-        type="button"
-        onclick="openElectricity()"
-      >
-        <div class="service-icon">⚡</div>
-        <div class="service-name">الكهرباء</div>
-        <div class="service-desc">
-          أعطال، إنارة، أفياش وقواطع
-        </div>
-      </button>
-
-
-      <button
-        class="service"
-        type="button"
-        onclick="openCleaning()"
-      >
-        <div class="service-icon">🧹</div>
-        <div class="service-name">التنظيف</div>
-        <div class="service-desc">
-          منازل، كنب، سجاد وتنظيف شامل
-        </div>
-      </button>
-
-
-      <button
-        class="service"
-        type="button"
-        onclick="openMoving()"
-      >
-        <div class="service-icon">🚚</div>
-        <div class="service-name">نقل العفش</div>
-        <div class="service-desc">
-          نقل، تغليف، فك وتركيب
-        </div>
-      </button>
-
-
-      <button
-        class="service"
-        type="button"
-        onclick="openPestControl()"
-      >
-        <div class="service-icon">🐜</div>
-        <div class="service-name">مكافحة الحشرات</div>
-        <div class="service-desc">
-          رش ومكافحة الحشرات المنزلية
-        </div>
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- المكيفات -->
-
-  <section id="ac" class="page service-page hidden">
-
-    <button
-      class="back-button"
-      type="button"
-      onclick="showHome()"
-    >
-      ← رجوع
-    </button>
-
-    <h2>❄️ المكيفات</h2>
-
-    <p>
-      ابحث عن المكيف الذي تريده وشاهد الأسعار المتوفرة للمقارنة.
-    </p>
-
-    <div class="search">
-
-      <input
-        type="search"
-        placeholder="مثال: مكيف سبليت 18 وحدة"
-        oninput="
-          document.getElementById('searchInput').value = this.value;
           searchProducts();
-          document.getElementById('acResults').innerHTML =
-          document.getElementById('searchResults').innerHTML;
-        "
-      >
+        }
+      );
+    }
+  </script>
 
-    </div>
-
-    <div id="acResults"></div>
-
-  </section>
-
-
-  <!-- السباكة -->
-
-  <section id="plumbing" class="page service-page hidden">
-
-    <button
-      class="back-button"
-      type="button"
-      onclick="showHome()"
-    >
-      ← رجوع
-    </button>
-
-    <h2>🚰 السباكة</h2>
-
-    <div class="service-box">
-      قسم السباكة جاهز للمرحلة القادمة من إضافة الأسعار ومقدمي الخدمات.
-    </div>
-
-  </section>
-
-
-  <!-- الكهرباء -->
-
-  <section id="electricity" class="page service-page hidden">
-
-    <button
-      class="back-button"
-      type="button"
-      onclick="showHome()"
-    >
-      ← رجوع
-    </button>
-
-    <h2>⚡ الكهرباء</h2>
-
-    <div class="service-box">
-      قسم الكهرباء جاهز لإضافة الأسعار والخدمات.
-    </div>
-
-  </section>
-
-
-  <!-- التنظيف -->
-  <section id="cleaning" class="page service-page hidden">
-
-    <button
-      class="back-button"
-      type="button"
-      onclick="showHome()"
-    >
-      ← رجوع
-    </button>
-
-    <h2>🧹 التنظيف</h2>
-
-    <div class="service-box">
-      قسم التنظيف جاهز لإضافة الشركات والأسعار.
-    </div>
-
-  </section>
-
-
-  <!-- نقل العفش -->
-
-  <section id="moving" class="page service-page hidden">
-
-    <button
-      class="back-button"
-      type="button"
-      onclick="showHome()"
-    >
-      ← رجوع
-    </button>
-
-    <h2>🚚 نقل العفش</h2>
-
-    <div class="service-box">
-      قسم نقل العفش جاهز لإضافة الأسعار ومقدمي الخدمة.
-    </div>
-
-  </section>
-
-
-  <!-- مكافحة الحشرات -->
-
-  <section id="pest" class="page service-page hidden">
-
-    <button
-      class="back-button"
-      type="button"
-      onclick="showHome()"
-    >
-      ← رجوع
-    </button>
-
-    <h2>🐜 مكافحة الحشرات</h2>
-
-    <div class="service-box">
-      قسم مكافحة الحشرات جاهز لإضافة الأسعار ومقدمي الخدمة.
-    </div>
-
-  </section>
-
-</main>
-
-
-<footer>
-  سعرها © 2026
-</footer>
+</body>
+</html>
