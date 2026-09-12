@@ -2,47 +2,488 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>سعرها — قبل لا تدفع... سعرها</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+
+  <title>سعرها — قبل لا تدفع... سعّرها</title>
+
   <style>
-    :root{--green:#0F5132;--green2:#167348;--black:#111111;--gold:#D4AF37;--bg:#F6F7F8;--card:#ffffff;--muted:#6B7280;--border:#E5E7EB;--danger:#C62828;--ok:#16834a}
-    *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Tahoma,Arial,sans-serif;background:linear-gradient(180deg,#07150f 0,#0b2c1f 330px,var(--bg) 330px);color:var(--black)}
-    .shell{max-width:520px;margin:0 auto;min-height:100vh;padding-bottom:90px}.hero{padding:26px 18px 22px;color:#fff}.brand{display:flex;align-items:center;gap:10px}.tag{width:48px;height:56px;background:linear-gradient(135deg,var(--green2),var(--green));clip-path:polygon(18% 0,82% 0,100% 26%,100% 100%,0 100%,0 26%);display:grid;place-items:center;border:2px solid var(--gold);font-weight:900;font-size:27px;color:var(--gold);transform:rotate(-3deg)}
-    .brand h1{margin:0;font-size:34px}.brand small{display:block;color:#f2d77b;margin-top:2px;font-size:13px}.hero h2{font-size:26px;line-height:1.45;margin:30px 0 8px}.hero p{margin:0;color:#d4e5dc}.panel{background:var(--bg);border-radius:28px 28px 0 0;padding:18px;min-height:600px}.search{display:flex;background:#fff;border:1px solid var(--border);border-radius:16px;padding:6px;box-shadow:0 8px 25px #00000012}.search input{flex:1;border:0;outline:0;font-size:15px;padding:12px;background:transparent}.search button,.primary{border:0;background:var(--green);color:white;border-radius:12px;padding:12px 17px;font-weight:700;font-size:15px;cursor:pointer}.title{font-size:18px;margin:20px 0 12px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cat{background:#fff;border:1px solid var(--border);border-radius:16px;padding:15px 8px;text-align:center;cursor:pointer}.cat .i{font-size:25px}.cat b{display:block;margin-top:8px;font-size:13px}.card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:16px;margin-top:12px;box-shadow:0 6px 20px #00000008}.row{display:flex;justify-content:space-between;gap:12px;align-items:center}.muted{color:var(--muted);font-size:13px}.hidden{display:none}.services button{width:100%;text-align:right;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:15px;background:#fff;border:1px solid var(--border);border-radius:14px;margin:7px 0;font-size:15px;cursor:pointer}.services button small{color:var(--muted);font-size:11px;white-space:nowrap}.field{margin:14px 0}.field label{display:block;font-weight:700;margin-bottom:7px}.field input,.field select{width:100%;padding:14px;border:1px solid #d5d8dc;border-radius:12px;background:#fff;font-size:15px}.counter{display:flex;align-items:center;border:1px solid var(--border);border-radius:12px;overflow:hidden}.counter button{width:48px;height:48px;border:0;background:#fff;font-size:23px}.counter span{flex:1;text-align:center;font-size:20px;font-weight:800}.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.seg button{padding:12px;border:1px solid var(--border);background:#fff;border-radius:11px;font-weight:700}.seg .active{background:var(--green);color:white}.pricebox{background:#eff9f3;border-radius:18px;padding:20px;text-align:center;margin:14px 0}.pricebox .price{font-size:36px;font-weight:900;color:var(--green);direction:rtl}.confidence{display:inline-block;background:#dcf3e5;color:var(--green);padding:7px 12px;border-radius:999px;font-weight:700}.compareResult{padding:16px;border-radius:14px;margin-top:12px}.high{background:#fff0f0;color:var(--danger)}.normal{background:#eff9f3;color:var(--ok)}.low{background:#fff9e7;color:#8a6700}.secondary{width:100%;border:1px solid var(--green);color:var(--green);background:white;border-radius:12px;padding:13px;font-weight:700;margin-top:9px;cursor:pointer}.back{background:none;border:0;font-size:17px;margin-bottom:8px;cursor:pointer}.foot{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid var(--border);padding:9px 5px calc(9px + env(safe-area-inset-bottom));font-size:12px;text-align:center}.foot div{color:#60656b}.foot .on{color:var(--green);font-weight:800}.note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:10px}
+    :root {
+      --green: #0F5132;
+      --green2: #167348;
+      --black: #111111;
+      --gold: #D4AF37;
+      --bg: #F6F7F8;
+      --card: #ffffff;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Tahoma,
+        Arial,
+        sans-serif;
+      background: var(--bg);
+      color: var(--black);
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .shell {
+      max-width: 900px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding: 22px 18px 90px;
+    }
+
+    .hero {
+      background: linear-gradient(
+        135deg,
+        var(--green),
+        var(--green2)
+      );
+      color: white;
+      border-radius: 26px;
+      padding: 28px 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 14px 35px rgba(15, 81, 50, 0.18);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 17px;
+      background: var(--gold);
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 27px;
+      font-weight: 900;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 2px;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .hero h2 {
+      margin: 24px 0 7px;
+      font-size: 23px;
+    }
+
+    .hero p {
+      margin: 0;
+      line-height: 1.8;
+      opacity: 0.92;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+    }
+
+    .search {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .search input {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 15px;
+      outline: none;
+      background: #fff;
+    }
+
+    .search input:focus {
+      border-color: var(--green2);
+    }
+
+    .search button {
+      border: 0;
+      border-radius: 16px;
+      padding: 0 20px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .section-title {
+      margin: 5px 0 14px;
+      font-size: 20px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .service {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 20px;
+      padding: 19px 14px;
+      text-align: right;
+      transition: 0.15s ease;
+    }
+
+    .service:active {
+      transform: scale(0.98);
+    }
+
+    .service-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .service-name {
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    .service-desc {
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    #servicePage {
+      display: none;
+    }
+
+    .back {
+      border: 0;
+      background: transparent;
+      color: var(--green);
+      font-weight: 900;
+      padding: 5px 0 15px;
+    }
+
+    #serviceTitle {
+      margin: 0 0 15px;
+      font-size: 24px;
+    }
+
+    #products {
+      display: grid;
+      gap: 11px;
+    }
+
+    .product {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 15px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .product-name {
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .price-button {
+      border: 0;
+      border-radius: 13px;
+      padding: 11px 14px;
+      white-space: nowrap;
+      background: var(--green);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .note {
+      margin-top: 18px;
+      border-radius: 16px;
+      background: #FFF9E6;
+      border: 1px solid #F1D98A;
+      padding: 13px;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    #selectedProduct {
+      font-weight: 900;
+      color: var(--green);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 10px 0;
+      font-size: 12px;
+    }
+
+    @media (min-width: 700px) {
+      .services {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   </style>
 </head>
+
 <body>
-<div class="shell">
-  <section class="hero">
-    <div class="brand"><div class="tag">﷼</div><div><h1>سعرها</h1><small>قبل لا تدفع... سعرها</small></div></div>
-    <h2>اعرف السعر العادل<br>لأي خدمة في السعودية</h2><p>مقارنة • شفافية • قرار أفضل</p>
-  </section>
-  <main class="panel">
-    <section id="home">
-      <div class="search"><input id="searchInput" placeholder="وش الخدمة اللي تبي تعرف سعرها؟"><button onclick="searchService()">بحث</button></div>
-      <h3 class="title">اختر من الفئات</h3>
-      <div class="grid">
-        <div class="cat" onclick="openAc()"><div class="i">❄️</div><b>مكيفات</b></div><div class="cat" onclick="openPlumbing()"><div class="i">🚰</div><b>سباكة</b></div><div class="cat" onclick="openElectric()"><div class="i">⚡</div><b>كهرباء</b></div>
-        <div class="cat"><div class="i">🧹</div><b>تنظيف</b></div><div class="cat"><div class="i">🚚</div><b>نقل أثاث</b></div><div class="cat"><div class="i">🐜</div><b>مكافحة حشرات</b></div>
+
+  <div class="shell">
+
+    <section class="hero">
+
+      <div class="brand">
+
+        <div class="logo">﷼</div>
+
+        <div>
+          <h1>سعرها</h1>
+          <small>قبل لا تدفع... سعّرها</small>
+        </div>
+
       </div>
-      <div id="searchMsg" class="note"></div><div class="card"><div class="row"><div><b>💡 قاعدة أسعار منظمة</b><div class="muted" id="dataVersion"></div></div><button class="primary" onclick="openAc()">استكشف</button></div></div>
+
+      <h2>اعرف السعر العادل قبل ما تدفع</h2>
+
+      <p>
+        اختر الخدمة، قارن السعر، وخذ فكرة أوضح
+        قبل الاتفاق مع مقدم الخدمة.
+      </p>
+
     </section>
 
-    <section id="ac" class="hidden"><button class="back" onclick="show('home')">→ رجوع</button><h2 id="categoryTitle">❄️ مكيفات</h2><p class="muted" id="categoryDesc">اختر الخدمة التي تبي تعرف سعرها</p><div class="services" id="serviceList"></div></section>
 
-    <section id="form" class="hidden"><button class="back" onclick="selected ? openCategory(selected.category, selected.category==='ac'?'مكيفات':selected.category==='plumbing'?'سباكة':'كهرباء', selected.category==='ac'?'❄️':selected.category==='plumbing'?'🚰':'⚡') : show('home')">→ رجوع</button><h2 id="serviceTitle"></h2><p class="muted" id="unitHint"></p><div class="field"><label>الكمية</label><div class="counter"><button onclick="count(-1)">−</button><span id="qty">1</span><button onclick="count(1)">+</button></div></div><div class="field"><label>المدينة</label><select id="city"><option>الرياض</option></select></div><button class="primary" style="width:100%;padding:15px" onclick="calculate()">عرض السعر المتوقع</button></section>
+    <main class="panel">
 
-    <section id="result" class="hidden"><button class="back" onclick="show('form')">→ تعديل البيانات</button><h2>النتيجة</h2><div class="card"><b id="resultService"></b><div class="muted" id="summary"></div><div class="pricebox"><div class="muted">السعر العادل المتوقع</div><div class="price" id="priceRange">—</div><div class="confidence" id="confidence">● ثقة السعر</div></div><div class="note"><b>ليش السعر يختلف؟</b><br><span id="why"></span><br><br>السعر مرجعي وليس عرضًا ملزمًا، وقد يتغير بعد المعاينة.</div></div>
-      <div class="card"><b>حصلت على عرض من فني؟</b><div class="field"><input id="quote" type="number" placeholder="مثال: 850"></div><button class="secondary" onclick="compareQuote()">قيّم السعر</button><div id="comparison"></div></div>
-      <button class="primary" style="width:100%;padding:15px;margin-top:12px" onclick="requestQuote()">احصل على عروض أسعار</button>
-    </section>
+      <section id="home">
 
-    <section id="lead" class="hidden"><button class="back" onclick="show('result')">→ رجوع</button><h2>اطلب عروض أسعار</h2><div class="card"><div class="field"><label>الاسم</label><input id="name" placeholder="اسمك"></div><div class="field"><label>رقم الجوال</label><input id="phone" inputmode="tel" placeholder="05xxxxxxxx"></div><div class="field"><label>ملاحظات إضافية</label><input id="notes" placeholder="مثال: المكيف في الدور الثاني"></div><button class="primary" style="width:100%;padding:15px" onclick="submitLead()">إرسال الطلب</button><p class="note">في النسخة التجريبية يتم حفظ الطلب على جهازك فقط لمحاكاة رحلة العميل.</p></div></section>
+        <div class="search">
 
-    <section id="done" class="hidden"><div class="card" style="text-align:center;padding:30px"><div style="font-size:50px">✅</div><h2>تم استلام طلبك التجريبي</h2><p class="muted">هذه هي نهاية رحلة العميل في MVP الأول.</p><button class="primary" onclick="show('home')">العودة للرئيسية</button></div></section>
-  </main>
-</div>
-<div class="foot"><div class="on">⌂<br>الرئيسية</div><div>♡<br>المفضلة</div><div>◉<br>عروضي</div><div>♙<br>حسابي</div></div>
-<script src="data.js"></script>
-<script src="app.js"></script>
-</body></html>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="وش الخدمة اللي تبي تعرف سعرها؟"
+            autocomplete="off"
+          />
+
+          <button
+            type="button"
+            onclick="searchProducts()"
+          >
+            بحث
+          </button>
+
+        </div>
+
+
+        <h2 class="section-title">
+          اختر الخدمة
+        </h2>
+
+
+        <div class="services">
+
+          <button
+            class="service"
+            type="button"
+            onclick="openAC()"
+          >
+            <div class="service-icon">❄️</div>
+            <div class="service-name">المكيفات</div>
+            <div class="service-desc">
+              تنظيف، تركيب، صيانة وفريون
+            </div>
+          </button>
+
+
+          <button
+            class="service"
+            type="button"
+            onclick="openPlumbing()"
+          >
+            <div class="service-icon">🚿</div>
+            <div class="service-name">السباكة</div>
+            <div class="service-desc">
+              تسريبات، سخانات وتمديدات
+            </div>
+          </button>
+
+
+          <button
+            class="service"
+            type="button"
+            onclick="openElectricity()"
+          >
+            <div class="service-icon">⚡</div>
+            <div class="service-name">الكهرباء</div>
+            <div class="service-desc">
+              أعطال، إنارة، أفياش وقواطع
+            </div>
+          </button>
+
+
+          <button
+            class="service"
+            type="button"
+            onclick="openCleaning()"
+          >
+            <div class="service-icon">🧹</div>
+            <div class="service-name">التنظيف</div>
+            <div class="service-desc">
+              منازل، كنب، سجاد وتنظيف شامل
+            </div>
+          </button>
+
+
+          <button
+            class="service"
+            type="button"
+            onclick="openMoving()"
+          >
+            <div class="service-icon">🚚</div>
+            <div class="service-name">نقل العفش</div>
+            <div class="service-desc">
+              نقل، تغليف، فك وتركيب
+            </div>
+          </button>
+
+
+          <button
+            class="service"
+            type="button"
+            onclick="openPestControl()"
+          >
+            <div class="service-icon">🐜</div>
+            <div class="service-name">
+              مكافحة الحشرات
+            </div>
+            <div class="service-desc">
+              رش ومكافحة الحشرات المنزلية
+            </div>
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <section id="servicePage">
+
+        <button
+          class="back"
+          type="button"
+          onclick="showHome()"
+        >
+          ← رجوع للرئيسية
+        </button>
+
+        <h2 id="serviceTitle">
+          الخدمة
+        </h2>
+
+
+        <div class="search">
+
+          <input
+            id="serviceSearchInput"
+            type="search"
+            placeholder="ابحث داخل الخدمات..."
+            autocomplete="off"
+          />
+
+        </div>
+
+
+        <div id="products"></div>
+
+
+        <div class="note">
+          الخدمة المختارة:
+          <span id="selectedProduct">
+            لم يتم اختيار خدمة
+          </span>
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer>
+      سعرها © 2026
+    </footer>
+
+  </div>
+
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+
+
+  <script>
+    const serviceSearchInput =
+      document.getElementById("serviceSearchInput");
+
+    if (serviceSearchInput) {
+
+      serviceSearchInput.addEventListener(
+        "input",
+        function () {
+
+          const searchInput =
+            document.getElementById("searchInput");
+
+          if (searchInput) {
+            searchInput.value =
+              serviceSearchInput.value;
+          }
+
+          searchProducts();
+
+        }
+      );
+
+    }
+  </script>
+
+</body>
+</html>
