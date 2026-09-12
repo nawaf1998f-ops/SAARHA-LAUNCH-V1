@@ -39,5 +39,10 @@ function searchProducts(searchText) {
     );
   });
 }
+function openAC() {
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("ac").classList.remove("hidden");
+}
 
+window.openAC = openAC;
 export { apps, searchProducts };
