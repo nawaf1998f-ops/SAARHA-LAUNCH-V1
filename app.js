@@ -1,8 +1,3 @@
-// ========================================
-// سعرها - apps.js
-// ========================================
-
-// بيانات الخدمات
 const services = {
   ac: {
     title: "المكيفات",
@@ -83,22 +78,15 @@ const services = {
   }
 };
 
-
-// ========================================
-// الرجوع للرئيسية
-// ========================================
-
 function showHome() {
   const home = document.getElementById("home");
   const servicePage = document.getElementById("servicePage");
 
-  if (home) {
-    home.style.display = "";
-  }
+  if (home) home.style.display = "";
+  if (servicePage) servicePage.style.display = "none";
 
-  if (servicePage) {
-    servicePage.style.display = "none";
-  }
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) searchInput.value = "";
 
   window.scrollTo({
     top: 0,
@@ -106,55 +94,33 @@ function showHome() {
   });
 }
 
-
-// ========================================
-// فتح أي خدمة
-// ========================================
-
 function openService(serviceName) {
   const service = services[serviceName];
 
-  if (!service) {
-    console.log("الخدمة غير موجودة:", serviceName);
-    return;
-  }
+  if (!service) return;
 
   const home = document.getElementById("home");
   const servicePage = document.getElementById("servicePage");
   const serviceTitle = document.getElementById("serviceTitle");
   const productsContainer = document.getElementById("products");
 
-  if (home) {
-    home.style.display = "none";
-  }
-
-  if (servicePage) {
-    servicePage.style.display = "";
-  }
+  if (home) home.style.display = "none";
+  if (servicePage) servicePage.style.display = "";
 
   if (serviceTitle) {
-    serviceTitle.textContent =
-      service.icon + " " + service.title;
+    serviceTitle.textContent = service.icon + " " + service.title;
   }
 
   if (productsContainer) {
     productsContainer.innerHTML = "";
 
-    service.products.forEach(function(product) {
-
+    service.products.forEach(function (product) {
       const card = document.createElement("div");
 
       card.className = "product";
 
-      card.setAttribute(
-        "data-search",
-        product.toLowerCase()
-      );
-
       card.innerHTML = `
-        <div class="product-name">
-          ${product}
-        </div>
+        <div class="product-name">${product}</div>
 
         <button
           type="button"
@@ -169,11 +135,11 @@ function openService(serviceName) {
     });
   }
 
-  const searchInput =
-    document.getElementById("searchInput");
+  const serviceSearchInput =
+    document.getElementById("serviceSearchInput");
 
-  if (searchInput) {
-    searchInput.value = "";
+  if (serviceSearchInput) {
+    serviceSearchInput.value = "";
   }
 
   window.scrollTo({
@@ -182,167 +148,156 @@ function openService(serviceName) {
   });
 }
 
-
-// ========================================
-// المكيفات
-// ========================================
-
 function openAC() {
   openService("ac");
 }
-
-
-// ========================================
-// السباكة
-// ========================================
 
 function openPlumbing() {
   openService("plumbing");
 }
 
-
-// ========================================
-// الكهرباء
-// ========================================
-
 function openElectricity() {
   openService("electricity");
 }
-
-
-// ========================================
-// التنظيف
-// ========================================
 
 function openCleaning() {
   openService("cleaning");
 }
 
-
-// ========================================
-// نقل العفش
-// ========================================
-
 function openMoving() {
   openService("moving");
 }
-
-
-// ========================================
-// مكافحة الحشرات
-// ========================================
 
 function openPestControl() {
   openService("pestcontrol");
 }
 
-
-// ========================================
-// اختيار الخدمة
-// ========================================
-
 function selectProduct(productName) {
-
   const selectedProduct =
     document.getElementById("selectedProduct");
 
   if (selectedProduct) {
     selectedProduct.textContent = productName;
   }
-
-  console.log(
-    "الخدمة المختارة:",
-    productName
-  );
 }
 
-
-// ========================================
-// البحث
-// ========================================
-
 function searchProducts() {
-
-  const input =
+  const mainSearch =
     document.getElementById("searchInput");
 
-  if (!input) {
+  const serviceSearch =
+    document.getElementById("serviceSearchInput");
+
+  let searchText = "";
+
+  if (
+    serviceSearch &&
+    serviceSearch.offsetParent !== null
+  ) {
+    searchText = serviceSearch.value;
+  } else if (mainSearch) {
+    searchText = mainSearch.value;
+  }
+
+  searchText =
+    searchText.trim().toLowerCase();
+
+  const servicePage =
+    document.getElementById("servicePage");
+
+  if (
+    servicePage &&
+    servicePage.style.display !== "none"
+  ) {
+    const products =
+      document.querySelectorAll(".product");
+
+    products.forEach(function (product) {
+      const text =
+        product.textContent.toLowerCase();
+
+      product.style.display =
+        text.includes(searchText)
+          ? ""
+          : "none";
+    });
+
     return;
   }
 
-  const searchText =
-    input.value
-      .trim()
-      .toLowerCase();
+  if (!searchText) return;
 
-  const products =
-    document.querySelectorAll(".product");
+  const matchingService =
+    Object.keys(services).find(function (key) {
+      const service = services[key];
 
-  products.forEach(function(product) {
+      const serviceText =
+        (
+          service.title +
+          " " +
+          service.products.join(" ")
+        ).toLowerCase();
 
-    const text =
-      product.textContent
-        .trim()
-        .toLowerCase();
+      return serviceText.includes(searchText);
+    });
 
-    if (text.includes(searchText)) {
+  if (matchingService) {
+    openService(matchingService);
 
-      product.style.display = "";
+    setTimeout(function () {
+      const serviceSearchInput =
+        document.getElementById(
+          "serviceSearchInput"
+        );
 
-    } else {
+      if (serviceSearchInput) {
+        serviceSearchInput.value =
+          searchText;
 
-      product.style.display = "none";
-
-    }
-
-  });
+        searchProducts();
+      }
+    }, 50);
+  }
 }
-
-
-// ========================================
-// تشغيل البحث أثناء الكتابة
-// ========================================
 
 document.addEventListener(
   "DOMContentLoaded",
-  function() {
-
+  function () {
     const searchInput =
       document.getElementById("searchInput");
 
     if (searchInput) {
-
       searchInput.addEventListener(
+        "keydown",
+        function (event) {
+          if (event.key === "Enter") {
+            searchProducts();
+          }
+        }
+      );
+    }
+
+    const serviceSearchInput =
+      document.getElementById(
+        "serviceSearchInput"
+      );
+
+    if (serviceSearchInput) {
+      serviceSearchInput.addEventListener(
         "input",
         searchProducts
       );
-
     }
-
   }
 );
 
-
-// ========================================
-// ربط الوظائف بالموقع
-// ========================================
-
 window.showHome = showHome;
-
 window.openService = openService;
-
 window.openAC = openAC;
-
 window.openPlumbing = openPlumbing;
-
 window.openElectricity = openElectricity;
-
 window.openCleaning = openCleaning;
-
 window.openMoving = openMoving;
-
 window.openPestControl = openPestControl;
-
 window.searchProducts = searchProducts;
-
 window.selectProduct = selectProduct;
