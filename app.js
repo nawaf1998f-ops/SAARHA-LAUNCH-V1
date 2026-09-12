@@ -45,4 +45,4 @@ function openAC() {
 }
 
 window.openAC = openAC;
-export { apps, searchProducts };
+
